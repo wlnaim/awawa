@@ -1,0 +1,31 @@
+[package]
+name = "awawa-relay"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Relay ciego QUIC (UDP 4433): registro de sesiones con TTL, emparejamiento opaco, limite por IP y conector de cliente con clave fijada"
+
+[features]
+# Ganchos solo para pruebas (`RelayConfig::tap`, `RelayClock::Manual`). No se activa en produccion.
+test-support = []
+
+[dependencies]
+awawa-protocol = { path = "../awawa-protocol" }
+tokio = { workspace = true, features = ["macros", "signal"] }
+quinn = { workspace = true }
+rustls = { workspace = true }
+rcgen = { workspace = true }
+dashmap = { workspace = true }
+governor = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+postcard = { workspace = true, features = ["alloc"] }
+tracing = { workspace = true }
+tracing-subscriber = { workspace = true }
+zeroize = { workspace = true }
+
+[dev-dependencies]
+# Activa `test-support` en las pruebas de integracion (tests\) sin exponerla a los demas crates.
+awawa-relay = { path = ".", features = ["test-support"] }
+
+[build-dependencies]
+embed-resource.workspace = true

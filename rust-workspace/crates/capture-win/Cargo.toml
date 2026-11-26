@@ -1,0 +1,24 @@
+[package]
+name = "capture-win"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Contrato de captura de escritorio (DXGI Desktop Duplication / WGC) con guardia de sesion aprobada"
+
+[dependencies]
+awawa-protocol = { path = "../awawa-protocol" }
+zstd.workspace = true
+
+[target.'cfg(windows)'.dependencies]
+windows = { workspace = true, features = [
+    "Win32_Foundation",
+    "Win32_Graphics_Direct3D",
+    "Win32_Graphics_Direct3D11",
+    "Win32_Graphics_Dxgi",
+    "Win32_Graphics_Dxgi_Common",
+    "Win32_Graphics_Gdi",
+    "Win32_UI_HiDpi",
+] }
+
+[dev-dependencies]
+awawa-protocol = { path = "../awawa-protocol", features = ["test-support"] }

@@ -1,0 +1,31 @@
+[package]
+name = "awawa-host"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Cliente Receptor de soporte remoto bajo demanda (genera ID/Pass y exige aprobacion local)"
+
+[dependencies]
+awawa-protocol = { path = "../awawa-protocol" }
+capture-win = { path = "../capture-win" }
+input-win = { path = "../input-win" }
+awawa-relay = { path = "../awawa-relay" }
+tokio = { workspace = true, features = ["macros"] }
+zstd.workspace = true
+eframe.workspace = true
+egui.workspace = true
+windows = { workspace = true, features = [
+    "Win32_Foundation",
+    "Win32_System_DataExchange",
+    "Win32_System_Memory",
+    "Win32_System_Ole",
+    "Win32_System_Threading",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[dev-dependencies]
+awawa-protocol = { path = "../awawa-protocol", features = ["test-support"] }
+
+[build-dependencies]
+embed-resource.workspace = true

@@ -1,0 +1,23 @@
+[package]
+name = "awawa-protocol"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Protocolo base, credenciales efimeras CSPRNG y compuerta Type-State de aprobacion local mandatoria"
+
+[dependencies]
+spake2 = { workspace = true }
+hkdf = { workspace = true }
+sha2 = { workspace = true }
+chacha20poly1305 = { workspace = true, features = ["zeroize"] }
+zeroize = { workspace = true }
+x25519-dalek = { workspace = true }
+ed25519-dalek = { workspace = true }
+serde = { workspace = true, features = ["derive"] }
+postcard = { workspace = true, features = ["alloc"] }
+
+[features]
+# Solo pruebas: expone `run_in_memory_handshake` (handshake completo sin red).
+test-support = []
+# Solo el agente de sesion (awawa-service): `ApprovedActiveSession::for_session_agent`.
+session-agent = []

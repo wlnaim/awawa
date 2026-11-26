@@ -1,0 +1,17 @@
+[package]
+name = "input-win"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Inyeccion segura de Cursor y Teclado (Win32 SendInput) vinculada a ApprovedActiveSession"
+
+[dependencies]
+awawa-protocol = { path = "../awawa-protocol" }
+windows = { workspace = true, features = [
+    "Win32_Foundation",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[dev-dependencies]
+awawa-protocol = { path = "../awawa-protocol", features = ["test-support"] }

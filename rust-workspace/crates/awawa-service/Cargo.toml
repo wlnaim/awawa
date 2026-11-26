@@ -1,0 +1,32 @@
+[package]
+name = "awawa-service"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Servicio de Windows para acceso desatendido: KDF CNG, almacen DPAPI del verificador, sonda de escritorio, eventos de sesion, auditoria y lanzador del agente de sesion"
+
+[dependencies]
+awawa-protocol = { path = "../awawa-protocol", features = ["session-agent"] }
+capture-win = { path = "../capture-win" }
+input-win = { path = "../input-win" }
+awawa-relay = { path = "../awawa-relay" }
+tokio = { workspace = true, features = ["macros", "io-util"] }
+serde = { workspace = true, features = ["derive"] }
+sha2.workspace = true
+argon2 = { workspace = true, default-features = false, features = ["zeroize"] }
+zeroize.workspace = true
+zstd.workspace = true
+eframe.workspace = true
+egui.workspace = true
+windows = { workspace = true, features = [
+    "Win32_Foundation",
+    "Win32_System_DataExchange",
+    "Win32_System_Memory",
+    "Win32_System_Ole",
+    "Win32_System_Threading",
+    "Win32_UI_Input_KeyboardAndMouse",
+    "Win32_UI_WindowsAndMessaging",
+] }
+
+[build-dependencies]
+embed-resource.workspace = true

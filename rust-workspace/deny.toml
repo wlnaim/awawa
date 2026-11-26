@@ -1,0 +1,37 @@
+# Politica de cargo-deny para el workspace de soporte remoto.
+
+[graph]
+all-features = true
+
+[advisories]
+# Valores por defecto de cargo-deny.
+
+[licenses]
+allow = [
+    "MIT",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Zlib",
+    "Unicode-3.0",
+    "Unicode-DFS-2016",
+]
+# Los crates propios del workspace (sin publicar) no deben fallar.
+private = { ignore = true }
+# Excepciones por crate; nunca ampliar `allow`.
+exceptions = [
+    { crate = "epaint_default_fonts", allow = ["OFL-1.1", "Ubuntu-font-1.0"] },
+    # arboard para pegar en el formulario del operador.
+    { crate = "clipboard-win", allow = ["BSL-1.0"] },
+    { crate = "error-code", allow = ["BSL-1.0"] },
+]
+
+[bans]
+multiple-versions = "warn"
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
+allow-registry = ["https://github.com/rust-lang/crates.io-index"]
+allow-git = []

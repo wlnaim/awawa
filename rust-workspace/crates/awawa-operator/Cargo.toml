@@ -1,0 +1,19 @@
+[package]
+name = "awawa-operator"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Consola/Visor del Agente de Soporte que solicita control remoto mediante ID y Contrasena"
+
+[dependencies]
+awawa-protocol = { path = "../awawa-protocol" }
+capture-win = { path = "../capture-win" }
+awawa-relay = { path = "../awawa-relay" }
+tokio = { workspace = true, features = ["macros"] }
+eframe = { workspace = true, features = ["clipboard"] }
+egui.workspace = true
+zeroize.workspace = true
+sha2.workspace = true
+
+[build-dependencies]
+embed-resource.workspace = true

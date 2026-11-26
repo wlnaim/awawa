@@ -1,0 +1,11 @@
+[target.x86_64-pc-windows-msvc]
+# Activa Control Flow Guard (CFG) en MSVC x64.
+# crt-static enlaza el runtime de C estaticamente: sin VCRUNTIME140.dll ni
+# redistribuible. /Brepro hace determinista el sello de tiempo del PE (linker MSVC).
+# Las rutas absolutas (--remap-path-prefix) dependen de la maquina: las agrega
+# scripts\package.ps1 al construir el paquete.
+rustflags = [
+    "-C", "control-flow-guard=checks",
+    "-C", "target-feature=+crt-static",
+    "-C", "link-arg=/Brepro",
+]

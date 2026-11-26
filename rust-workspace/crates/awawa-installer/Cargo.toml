@@ -1,0 +1,20 @@
+[package]
+name = "awawa-installer"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+description = "Instalador grafico Awawa-Setup: roles Host (receptor + relay local, desatendido opcional) y Agente de soporte, con binarios embebidos (zstd + SHA-256)"
+
+[dependencies]
+awawa-service = { path = "../awawa-service" }
+awawa-protocol = { path = "../awawa-protocol" }
+eframe.workspace = true
+egui.workspace = true
+zstd.workspace = true
+sha2.workspace = true
+zeroize.workspace = true
+
+[build-dependencies]
+embed-resource.workspace = true
+zstd.workspace = true
+sha2.workspace = true
